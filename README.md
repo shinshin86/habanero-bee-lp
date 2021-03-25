@@ -10,8 +10,17 @@
   <a href="https://github.com/shinshin86/habanero-bee/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/shinshin86/habanero-bee?color=blue" alt="Habanero Bee is released under the MIT license." />
   </a>
-  <a href="https://travis-ci.org/shinshin86/habanero-bee">
-    <img src="https://travis-ci.org/shinshin86/habanero-bee.svg?branch=main" alt="Current Travis CI build status." />
+  <a href ="https://github.com/shinshin86/habanero-bee/actions/workflows/format.yml">
+    <img src="https://github.com/shinshin86/habanero-bee/actions/workflows/format.yml/badge.svg" alt="Format Check">
+  </a>
+  <a href ="https://github.com/shinshin86/habanero-bee/actions/workflows/lint.yml">
+    <img src="https://github.com/shinshin86/habanero-bee/actions/workflows/lint.yml/badge.svg" alt="Lint">
+  </a>
+  <a href ="https://github.com/shinshin86/habanero-bee/actions/workflows/test.yml">
+    <img src="https://github.com/shinshin86/habanero-bee/actions/workflows/test.yml/badge.svg" alt="Test">
+  </a>
+  <a href ="https://github.com/shinshin86/habanero-bee/actions/workflows/type-check.yml">
+    <img src="https://github.com/shinshin86/habanero-bee/actions/workflows/type-check.yml/badge.svg" alt="Test">
   </a>
 </p>
 
@@ -22,6 +31,7 @@
 - [Setup Habanero Bee Site](#setup-habanero-bee-site)
   - [Make a content on Google Sheets](#make-a-content-on-google-sheets)
   - [Deploy to Netlify](#deploy-to-netlify)
+  - [Advanced: How to manage Habanero Bee in a private repository](#advanced-how-to-manage-habanero-bee-in-a-private-repository)
 - [For developers](#for-developers)
   - [Development Usage](#development-usage)
   - [Tips for development](#tips-for-development)
@@ -99,6 +109,31 @@ yarn clean && SHEET_URL=https://script.google.com/macros/s/AKfycbzFMeY9SFDVuGj9n
 ```
 
 Let's open `http://localhost:3000` with browser!
+
+### Advanced: How to manage Habanero Bee in a private repository
+
+If you use `Deploy to Netlify` button, it will be copied to your GitHub account as a public repository.  
+So, if you want to manage it as a private repository, you need to clone this repository using the `git clone` command.  
+The command for this is written below.
+
+```sh
+# clone and remove git
+git clone https://github.com/shinshin86/habanero-bee.git your-project
+cd your-project
+rm -rf .git
+
+# initialize
+git init
+git add .
+git commit
+```
+
+Create a private repository on your GitHub and push this project to it.
+
+If you are deploying to Netlify, you will need to log in to your Netlify dashboard and manually configure your site.
+(Even though it is manual, it is very easy!)
+
+Make sure to set an environment variable called `SHEET_URL` when deploying and set the Google Sheets public URL there.
 
 ## For developers
 
